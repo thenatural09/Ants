@@ -55,9 +55,19 @@ public class Main extends Application {
         return ant;
     }
 
+    Ant aggravateAnt(Ant ant) {
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ant;
+    }
+
     void moveAnts() {
         ants = ants.parallelStream()
                 .map(this::moveAnt)
+                .map(this::aggravateAnt)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
